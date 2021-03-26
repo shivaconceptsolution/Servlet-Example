@@ -1,0 +1,84 @@
+What is Servlet?
+
+It is Server Side Java program that is used to create dynamic web application, servlet provide set of classes and method to implement web programing business code.
+
+Servlet class defined under javax.http package, Java provide HttpServlet class to create Servlet.
+
+It has two predefined method
+
+1)  doGet():-  this method will work to implement Http Get Request of Web application.
+
+
+
+
+
+2)  doPost():-  this method will work to implement Http Post Request of Web application.
+
+
+
+Syntax of Servlet:-
+
+class Classname extends HttpServlet
+{
+    public void doGet(HttpServletRequest request, HttpServletReponse response)
+    {
+
+
+    }
+     public void doPost(HttpServletRequest request, HttpServletReponse response)
+    {
+
+
+    }
+
+}
+
+
+note:-  we we request any web url directly means without form then doGet() will call.
+
+when we submit application data using form component then form method decide that method is post or get.
+
+<form method="get">
+
+
+</form>
+
+it will call doGet() of servlet
+
+<form method="post">
+
+</form>
+
+it will call doPost() of Servlet
+
+
+How to create Servlet class using eclipse IDE?
+
+1)  File --->  New ---> Dynamic Web Project ---> ProjectName--->
+
+Select Server if already exist
+
+if not exist then download apache web server and simply put into c:/ or d:/
+
+and select New Runtime and provide path of apache folder.
+
+
+2)  after sucessfully project creation go into Java Resource Folder
+
+
+    create package on Java Resource
+
+    Right click on package and create Servlet class
+
+    
+
+
+
+
+
+
+
+
+
+
+
