@@ -30,11 +30,21 @@ public class AdditionNew extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/html");
+		String a1=request.getParameter("a")!=null?request.getParameter("a"):""; 
+		String b1=request.getParameter("b")!=null?request.getParameter("b"):"";
 		out.write("<form action='' method='post'>");
-		out.write("<input type='text' name='txtnum1' placeholder='enter first number' /><br>");
-		out.write("<input type='text' name='txtnum2' placeholder='enter second number' /><br>");
-		out.write("<input type='submit' name='btnsubmit' />");
+		out.write("<input type='text' name='txtnum1' placeholder='enter first number' value='"+a1+"'/><br>");
+		out.write("<input type='text' name='txtnum2' placeholder='enter second number' value='"+b1+"'/><br>");
+		out.write("<input type='submit' name='btnsubmit' value='+' />");
+		out.write("<input type='submit' name='btnsubmit' value='-' />");
+		out.write("<input type='submit' name='btnsubmit' value='*' />");
+		out.write("<input type='submit' name='btnsubmit' value='/' />");
 		out.write("</form>");
+		
+		if(request.getParameter("q")!=null)
+		{
+			out.print("Result is "+request.getParameter("q"));
+		}
 	}
 
 	/**
@@ -42,10 +52,37 @@ public class AdditionNew extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
+		try
+		{
+		
 		int a = Integer.parseInt(request.getParameter("txtnum1"));
 		int b = Integer.parseInt(request.getParameter("txtnum2"));
-		int c = a+b;
-		out.write("result is "+c);
+		int c ;
+		if(request.getParameter("btnsubmit").equals("+"))
+		{
+			c=a+b;
+		}
+		else if(request.getParameter("btnsubmit").equals("-"))
+		{
+			c=a-b;
+		}
+		else if(request.getParameter("btnsubmit").equals("*"))
+		{
+			c=a*b;
+		}
+		else
+		{
+			c=a/b;
+		}
+		//out.write("result is "+c);
+		//response.sendRedirect("AdditionNew?q="+c);
+		//response.sendRedirect("https://shivaconceptsolution.com");
+		response.sendRedirect("AdditionNew?q="+c+"&a="+a+"&b="+b);
+		}
+		catch(Exception ex)
+		{
+			out.write(ex.getMessage().toString());
+		}
 		
 		
 	}
